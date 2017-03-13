@@ -12,7 +12,7 @@
 		88289B6D1E5D58D300420294 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88289B6B1E5D58D300420294 /* Main.storyboard */; };
 		88289B6F1E5D58D300420294 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88289B6E1E5D58D300420294 /* Assets.xcassets */; };
 		88289B721E5D58D300420294 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88289B701E5D58D300420294 /* LaunchScreen.storyboard */; };
-		8895D6F81E6117B000DB4597 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895D6F71E6117B000DB4597 /* File.swift */; };
+		8895D6F81E6117B000DB4597 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895D6F71E6117B000DB4597 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		88289B6E1E5D58D300420294 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88289B711E5D58D300420294 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88289B731E5D58D300420294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8895D6F71E6117B000DB4597 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		8895D6F71E6117B000DB4597 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 				88289B6E1E5D58D300420294 /* Assets.xcassets */,
 				88289B701E5D58D300420294 /* LaunchScreen.storyboard */,
 				88289B731E5D58D300420294 /* Info.plist */,
-				8895D6F71E6117B000DB4597 /* File.swift */,
+				8895D6F71E6117B000DB4597 /* SettingsViewController.swift */,
 			);
 			path = TipCal;
 			sourceTree = "<group>";
@@ -140,7 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88289B6A1E5D58D300420294 /* ViewController.swift in Sources */,
-				8895D6F81E6117B000DB4597 /* File.swift in Sources */,
+				8895D6F81E6117B000DB4597 /* SettingsViewController.swift in Sources */,
 				88289B681E5D58D300420294 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +264,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TipCal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.proteus.ios.apps.TipCal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.np.ios.apps.TipCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -276,7 +276,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TipCal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.proteus.ios.apps.TipCal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.np.ios.apps.TipCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

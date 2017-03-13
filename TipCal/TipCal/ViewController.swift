@@ -3,7 +3,7 @@
 //  TipCal
 //
 //  Created by Niraj Pendal on 2/21/17.
-//  Copyright © 2017 Proteus. All rights reserved.
+//  Copyright © 2017. All rights reserved.
 //
 
 import UIKit
@@ -14,6 +14,10 @@ struct Theme {
     
 }
 
+struct  TipPercentage {
+    static let TipPercentages:[Double] = [ 0.18, 0.20, 0.25]
+    static let TipSelectedKey:String = "tipSelected"
+}
 
 class ViewController: UIViewController {
 
@@ -25,20 +29,42 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipTitleLabel: UILabel!
     @IBOutlet weak var totalTitleLabel: UILabel!
     
-    let tipConstants = [0.18, 0.2, 0.25]
+    let defaults = UserDefaults.standard
     
+    let SAVE_STATE_THRESHOLD:Double = 10*60
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let themeIndex = UserDefaults.standard.value(forKey: Theme.ThemeKey) as? Int
+        
+        let themeIndex = defaults.value(forKey: Theme.ThemeKey) as? Int
+        let tipSelectedIndex = defaults.value(forKey: TipPercentage.TipSelectedKey) as? Int
+        
         setTheme(themeIndex: themeIndex)
+        setTipPercentage(tipSelectedIndex: tipSelectedIndex)
+
+        
+        if let savedTime = defaults.value(forKey: "SavedTime") as? Date {
+            print(Date().timeIntervalSince1970)
+            print(savedTime.timeIntervalSince1970)
+            if ( (Date().timeIntervalSince1970 - savedTime.timeIntervalSince1970 ) <  SAVE_STATE_THRESHOLD){
+                self.bilTextField.text = defaults.value(forKey: "BillValue") as? String ?? ""
+                calculateTip()
+            }
+        }
+        
+        
+        self.bilTextField.becomeFirstResponder()
+        super.viewWillAppear(animated)
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,16 +74,26 @@ class ViewController: UIViewController {
     @IBAction func tapDetected(_ sender: Any) {
         view.endEditing(true)
     }
-
-    @IBAction func calculateTip(_ sender: Any) {
-        
+    
+    func calculateTip()  {
         let bill = Double(bilTextField.text!) ?? 0
-        let tip = bill * tipConstants[tipSegment.selectedSegmentIndex]
+        let tip = bill * TipPercentage.TipPercentages[tipSegment.selectedSegmentIndex]
         let total = bill + tip
         
         tipLabel.text = tip.format()
         totalLabel.text = total.format()
         
+        defaults.setValue(String(bill), forKey: "BillValue")
+        defaults.synchronize()
+    }
+
+    @IBAction func calculateTip(_ sender: Any) {
+        
+        calculateTip()
+        
+        
+        defaults.set(Date(), forKey: "SavedTime")
+        defaults.synchronize()
     }
     
     func setTheme(themeIndex: Int?) {
@@ -90,6 +126,12 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = fontColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: fontColor]
         
+    }
+    
+    func setTipPercentage(tipSelectedIndex: Int?)  {
+        
+        let selectedIndex = tipSelectedIndex ?? 0
+        self.tipSegment.selectedSegmentIndex = selectedIndex
     }
     
 }
